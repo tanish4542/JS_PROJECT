@@ -137,7 +137,7 @@ try {
     const refreshAccessToken=asyncHandler(async(req,res)=>{
           req.cookies.refreshToken || req.body.refreshToken
     
-          if(refreshAccessToken){
+          if(!refreshAccessToken){
             throw new ApiError(401,"Unauthorized request")
           }
           const decodedToken=jwt.verify(refreshAccessToken,process.env.REFRESH_TOKEN_SECRET)
